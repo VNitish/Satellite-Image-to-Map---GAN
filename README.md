@@ -49,6 +49,29 @@ Pix2Pix is a **conditional GAN (cGAN)** where the Generator learns to map an **i
 - **Generator (U-Net)** learns: `G(x) → y`
 - **Discriminator (CNN)** learns: `D(x, y) → real or fake`
 
+## 📉 GAN Loss Function
+
+The GAN loss for the Generator \( G \) and Discriminator \( D \) is defined as:
+
+### 🎯 Discriminator Loss
+
+\[
+\mathcal{L}_D = -\mathbb{E}_{x,y}[\log D(x, y)] - \mathbb{E}_{x}[\log (1 - D(x, G(x)))]
+\]
+
+### 🎯 Generator Loss
+
+\[
+\mathcal{L}_G = -\mathbb{E}_{x}[\log D(x, G(x))] + \lambda \cdot \| y - G(x) \|_1
+\]
+
+Where:
+- \( x \): input image (e.g., satellite image)
+- \( y \): target image (e.g., map)
+- \( G(x) \): generated output
+- \( \lambda \): weight for the L1 reconstruction loss (commonly set to 100)
+
+
 This enables **controllable image generation**.
 
 ### ⚙️ Generator: U-Net
