@@ -53,24 +53,15 @@ Pix2Pix is a **conditional GAN (cGAN)** where the Generator learns to map an **i
 
 The GAN loss for the Generator \( G \) and Discriminator \( D \) is defined as:
 
-### 🎯 Discriminator Loss
+## GAN Loss Function
 
-\[
-\mathcal{L}_D = -\mathbb{E}_{x,y}[\log D(x, y)] - \mathbb{E}_{x}[\log (1 - D(x, G(x)))]
-\]
+### Discriminator Loss
+![Discriminator Loss](https://latex.codecogs.com/png.image?\dpi{120}L_D=-E_{x,y}[\log%20D(x,%20y)]-E_{x}[\log(1-D(x,G(x)))])
 
-### 🎯 Generator Loss
+### Generator Loss
+![Generator Loss](https://latex.codecogs.com/png.image?\dpi{120}L_G=-E_{x}[\log%20D(x,G(x))]%20+%20\lambda%20\cdot%20||y-G(x)||_1)
 
-\[
-\mathcal{L}_G = -\mathbb{E}_{x}[\log D(x, G(x))] + \lambda \cdot \| y - G(x) \|_1
-\]
-
-Where:
-- \( x \): input image (e.g., satellite image)
-- \( y \): target image (e.g., map)
-- \( G(x) \): generated output
-- \( \lambda \): weight for the L1 reconstruction loss (commonly set to 100)
-
+*Where λ controls the importance of L1 loss (e.g., 100).*
 
 This enables **controllable image generation**.
 
