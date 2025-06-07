@@ -56,7 +56,7 @@ The GAN loss for the Generator \( G \) and Discriminator \( D \) is defined as:
 ## GAN Loss Function
 
 ### Discriminator Loss
-![Discriminator Loss](https://latex.codecogs.com/png.image?\dpi{120}L_D=-E_{x,y}[\log%20D(x,%20y)]-E_{x}[\log(1-D(x,G(x)))])
+![GAN loss](Images/GAN_loss.png)
 
 ### Generator Loss
 ![Generator Loss](https://latex.codecogs.com/png.image?\dpi{120}L_G=-E_{x}[\log%20D(x,G(x))]%20+%20\lambda%20\cdot%20||y-G(x)||_1)
