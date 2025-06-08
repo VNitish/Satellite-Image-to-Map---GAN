@@ -10,7 +10,7 @@ A PyTorch implementation of a **Pix2Pix-style GAN** that transforms satellite im
 
 - The image patch with 24 samples below shows the results of the Sat2Map Generator.
 - Satellite imagery (input):
-![Sample Output](path_to_sample_image.png) <!-- Replace with actual image path -->
+![Satellite imagery (input)](Images/sat_imgs.png) <!-- Replace with actual image path -->
 - Map Representation (output):
 ![Sample Output](path_to_sample_image.png)
 - The Generator successfully learned to capture main structures in satellite imagery such as roads, buildings, forests, rivers, seas, etc, map those structures to an encoded vector, and then map the encoded vector back to a full image with map representation.
