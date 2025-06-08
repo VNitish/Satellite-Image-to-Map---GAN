@@ -19,8 +19,8 @@ A PyTorch implementation of a **Pix2Pix-style GAN** that transforms satellite im
 
 ##  Pretrained Models
 
-- [Download Trained Generator & Discriminator Weights](https://drive.google.com/file/d/1PZScTjhOYwhYhjmZDk7FcScz4c6FN_am/view?usp=sharing)
-- [Download Sat2Map Dataset](#)
+- [Download Trained Generator & Discriminator Weights](#)
+- [Download Sat2Map Dataset](https://drive.google.com/file/d/1PZScTjhOYwhYhjmZDk7FcScz4c6FN_am/view?usp=sharing)
 
 ---
 
