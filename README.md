@@ -1,93 +1,85 @@
-# 🌍 Satellite-to-Map Translation using Pix2Pix GAN
+#  Satellite to Map Translation with Pix2Pix GAN
 
-PyTorch implementation of the [Pix2Pix](https://arxiv.org/abs/1611.07004) conditional GAN framework to translate satellite imagery into map-like representations. Built from scratch with a U-Net-based Generator and CNN Discriminator.
+A PyTorch implementation of a **Pix2Pix-style GAN** that transforms satellite imagery into corresponding map views. This project builds the model architecture from scratch using U-Net for the generator and a conditional discriminator for training.
 
----
-
-## 🔧 Features
-
-- Trains a U-Net Generator with cGAN Discriminator
-- Converts satellite images to maps (image-to-image translation)
-- Implements Pix2Pix from scratch using PyTorch
-- Includes pretrained weights and dataset download links
+**Paper Reference**: [Image-to-Image Translation with Conditional Adversarial Networks (Isola et al., 2016)](https://arxiv.org/abs/1611.07004)
 
 ---
 
-## 🧪 Results
+## Sample Output
 
-| Satellite Image | → | Translated Map |
-|-----------------|---|----------------|
-| (Insert sample here) | | |
+![Sample Output](path_to_sample_image.png) <!-- Replace with actual image path -->
 
 ---
 
-## 📁 Downloads
+## 📦 Pretrained Models
 
-- 🔗 [Trained Weights (Generator & Discriminator)](URL_HERE)
-- 🔗 [Sat2Map Dataset](URL_HERE)
-
----
-
-## ⚙️ Training Details
-
-| Hyperparameter       | Value         |
-|----------------------|---------------|
-| Batch Size           | 1             |
-| Image Size           | 256×256       |
-| Learning Rate        | 0.0002        |
-| Optimizer β Values   | (0.5, 0.999)  |
-| L1 Loss Weight (λL1) | 100           |
+- [Download Trained Generator & Discriminator Weights](#)
+- [Download Sat2Map Dataset](#)
 
 ---
 
-## 🧠 Key Concepts
+## Hyperparameters Used
 
-### 🎲 What is Pix2Pix?
-
-Pix2Pix is a **conditional GAN (cGAN)** where the Generator learns to map an **input image `x`** to an **output image `y`**, rather than generating from random noise.
-
-- **Generator (U-Net)** learns: `G(x) → y`
-- **Discriminator (CNN)** learns: `D(x, y) → real or fake`
-
-## 📉 GAN Loss Function
-
-The GAN loss for the Generator \( G \) and Discriminator \( D \) is defined as:
-
-## GAN Loss Function
-
-### Discriminator Loss
-![GAN loss](Images/GAN_loss.png)
-
-### Generator Loss
-![Generator Loss](https://latex.codecogs.com/png.image?\dpi{120}L_G=-E_{x}[\log%20D(x,G(x))]%20+%20\lambda%20\cdot%20||y-G(x)||_1)
-
-*Where λ controls the importance of L1 loss (e.g., 100).*
-
-This enables **controllable image generation**.
-
-### ⚙️ Generator: U-Net
-
-- **Encoder**: Extracts feature representations from input images.
-- **Decoder**: Translates encoded features into output maps.
-- **Skip Connections**: Preserve spatial information to boost translation quality.
-
-### 🛡️ Discriminator: PatchGAN
-
-- Classifies if image pairs (x, y) are real or generated.
-- Operates on image patches to ensure local realism.
+| Parameter         | Value        |
+|------------------|--------------|
+| Batch Size       | 1            |
+| Image Resolution | 256 × 256    |
+| Learning Rate    | 0.0002       |
+| Adam Betas       | (0.5, 0.999) |
+| L1 Loss Weight   | 100          |
 
 ---
 
-## 📌 References
+## Understanding cGANs
 
-- [Pix2Pix Paper](https://arxiv.org/abs/1611.07004)
-- [U-Net Paper](https://arxiv.org/abs/1505.04597)
+Unlike classic GANs that generate images from random noise `z`, **Conditional GANs** (cGANs) take both noise and an input image `x` to generate an output `G(z|x)`. This ensures the generated image is not just realistic but also relevant to the input.
+
+The discriminator evaluates pairs `(x, y)` and decides whether `y` is a plausible translation of `x`. This makes cGANs ideal for tasks like satellite-to-map translation.
 
 ---
 
-## 🚀 How to Run
+## Generator - U-Net Architecture
 
-```bash
-git clone https://github.com/your-username/satellite-pix2pix
-cd satellite-pix2pix
-python train.py
+- Uses an **Encoder-Decoder** design with skip connections.
+- Based on the [U-Net model](https://arxiv.org/abs/1505.04597), popular in image segmentation.
+- Retains spatial features via connections between encoder and decoder layers.
+
+> This project uses a U-Net adapted for 256x256 images.
+
+---
+
+## Discriminator - PatchGAN
+
+- A convolutional classifier that judges small patches of the image.
+- Inputs are the **concatenation** of the source (satellite) and target (map) images.
+- Outputs a grid where each cell evaluates a local patch as real or fake.
+
+---
+
+## Project Structure (Recommended)
+.
+├── data/
+│ └── sat2map/
+├── checkpoints/
+├── outputs/
+├── models/
+├── utils/
+├── train.py
+├── test.py
+└── README.md
+
+
+---
+
+## To-Do
+
+- [ ] Upload pretrained weights  
+- [ ] Add visual training logs  
+- [ ] Extend model to other datasets (e.g. facades, edges2shoes)
+
+---
+
+## License
+
+This repository is intended for educational and research purposes. See [LICENSE](LICENSE) for more details.
