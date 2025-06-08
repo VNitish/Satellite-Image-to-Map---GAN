@@ -12,7 +12,7 @@ A PyTorch implementation of a **Pix2Pix-style GAN** that transforms satellite im
 - Satellite imagery (input):
 ![Satellite imagery (input)](Images/sat_imgs.png) <!-- Replace with actual image path -->
 - Map Representation (output):
-![Sample Output](path_to_sample_image.png)
+![Map Representation (output)](Images/map_imgs.png)
 - The Generator successfully learned to capture main structures in satellite imagery such as roads, buildings, forests, rivers, seas, etc, map those structures to an encoded vector, and then map the encoded vector back to a full image with map representation.
 
 ---
@@ -50,6 +50,7 @@ The discriminator evaluates pairs `(x, y)` and decides whether `y` is a plausibl
 - Uses an **Encoder-Decoder** design with skip connections.
 - Based on the [U-Net model](https://arxiv.org/abs/1505.04597), popular in image segmentation.
 - Retains spatial features via connections between encoder and decoder layers.
+- ![U-NET architecture (output)](Images/U-NET.png)
 
 > This project uses a U-Net adapted for 256x256 images.
 
