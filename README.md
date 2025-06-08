@@ -8,11 +8,16 @@ A PyTorch implementation of a **Pix2Pix-style GAN** that transforms satellite im
 
 ## Sample Output
 
+- The image patch with 24 samples below shows the results of the Sat2Map Generator.
+- Satellite imagery (input):
 ![Sample Output](path_to_sample_image.png) <!-- Replace with actual image path -->
+- Map Representation (output):
+![Sample Output](path_to_sample_image.png)
+- The Generator successfully learned to capture main structures in satellite imagery such as roads, buildings, forests, rivers, seas, etc, map those structures to an encoded vector, and then map the encoded vector back to a full image with map representation.
 
 ---
 
-## 📦 Pretrained Models
+##  Pretrained Models
 
 - [Download Trained Generator & Discriminator Weights](#)
 - [Download Sat2Map Dataset](#)
@@ -20,6 +25,7 @@ A PyTorch implementation of a **Pix2Pix-style GAN** that transforms satellite im
 ---
 
 ## Hyperparameters Used
+- As suggested by the paper in the reference, here are the values of the hyper-parameters to train the Sat2Map model:
 
 | Parameter         | Value        |
 |------------------|--------------|
@@ -56,9 +62,22 @@ The discriminator evaluates pairs `(x, y)` and decides whether `y` is a plausibl
 - Outputs a grid where each cell evaluates a local patch as real or fake.
 
 ---
+## Loss Function
+
+- In Image translation task, the GAN training scheme is almost the same as the original GAN, except now we have conditional input and an additional L1 loss to ensure the generated image is not too different from the expected output.
+#### GAN Loss:
+- d
+- Just like original GAN, optimizing this Loss will forces the Generator to produce results with overall distribution close to that of the image representation in the dataset and thus improve the structural quality of the Generator's output.
+#### L1 Loss:
+- s
+- By using pixel-wise loss between 2 images, this loss forces the output image to be as close to the expected output as possible. In other words, it improves the minor details of the output.
+#### Final Loss:
+- ds
+- We simply combine GAN loss and L1 Loss to have the final Loss for the entire algorithm.
+
 
 ## Project Structure (Recommended)
-.
+```bash
 ├── data/
 │ └── sat2map/
 ├── checkpoints/
@@ -71,15 +90,3 @@ The discriminator evaluates pairs `(x, y)` and decides whether `y` is a plausibl
 
 
 ---
-
-## To-Do
-
-- [ ] Upload pretrained weights  
-- [ ] Add visual training logs  
-- [ ] Extend model to other datasets (e.g. facades, edges2shoes)
-
----
-
-## License
-
-This repository is intended for educational and research purposes. See [LICENSE](LICENSE) for more details.
