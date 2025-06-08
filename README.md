@@ -67,10 +67,10 @@ The discriminator evaluates pairs `(x, y)` and decides whether `y` is a plausibl
 
 - In Image translation task, the GAN training scheme is almost the same as the original GAN, except now we have conditional input and an additional L1 loss to ensure the generated image is not too different from the expected output.
 #### GAN Loss:
-- ![GAN LOss function](Images/GAN_Loss.png)
+- ![GAN LOss function](Images/GAN_loss.png)
 - Just like original GAN, optimizing this Loss will forces the Generator to produce results with overall distribution close to that of the image representation in the dataset and thus improve the structural quality of the Generator's output.
 #### L1 Loss:
-- ![L1 Loss function](Images/L1_Loss.png)
+- ![L1 Loss function](Images/L1_loss.png)
 - By using pixel-wise loss between 2 images, this loss forces the output image to be as close to the expected output as possible. In other words, it improves the minor details of the output.
 #### Final Loss:
 - ![TOTAL loss function](Images/total_loss.png)
