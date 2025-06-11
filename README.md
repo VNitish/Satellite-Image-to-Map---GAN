@@ -81,12 +81,7 @@ The discriminator evaluates pairs `(x, y)` and decides whether `y` is a plausibl
 
 ## Project Structure (Recommended)
 ```bash
-├── data/
-│ └── sat2map/
-├── checkpoints/
-├── outputs/
-├── models/
-├── utils/
+├── Images/
 ├── training_logs.txt
 ├── Sat2Map.ipynb
 └── README.md
