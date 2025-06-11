@@ -21,6 +21,8 @@ A PyTorch implementation of a **Pix2Pix-style GAN** that transforms satellite im
 
 - [Download Trained Generator & Discriminator Weights](#)
 - [Download Sat2Map Dataset](https://drive.google.com/file/d/1PZScTjhOYwhYhjmZDk7FcScz4c6FN_am/view?usp=sharing)
+- The original paper suggested to train for 200 epochs. But the sample output generated is from model that we trained till 100 epochs.
+- Training logs are included 
 
 ---
 
@@ -85,8 +87,8 @@ The discriminator evaluates pairs `(x, y)` and decides whether `y` is a plausibl
 ├── outputs/
 ├── models/
 ├── utils/
-├── train.py
-├── test.py
+├── training_logs.txt
+├── Sat2Map.ipynb
 └── README.md
 
 
